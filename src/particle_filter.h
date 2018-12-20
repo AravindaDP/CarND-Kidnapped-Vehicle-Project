@@ -21,6 +21,10 @@ struct Particle {
 	std::vector<int> associations;
 	std::vector<double> sense_x;
 	std::vector<double> sense_y;
+
+	bool operator==(const Particle& rhs) const{
+        return (std::abs(x - rhs.x) + std::abs(y - rhs.y)) < 0.01 && std::abs(theta - rhs.theta) < 0.0001;
+    }
 };
 
 
@@ -45,7 +49,7 @@ public:
 
 	// Constructor
 	// @param num_particles Number of particles
-	ParticleFilter() : num_particles(0), is_initialized(false) {}
+	ParticleFilter(int num_particles) : num_particles(num_particles), is_initialized(false) {}
 
 	// Destructor
 	~ParticleFilter() {}
