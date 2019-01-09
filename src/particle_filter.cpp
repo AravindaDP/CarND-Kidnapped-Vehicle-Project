@@ -141,6 +141,7 @@ void ParticleFilter::updateWeights(double sensor_range, double std_landmark[],
    *   (look at equation 3.33) http://planning.cs.uiuc.edu/node99.html
    */
   int num_obs = observations.size();
+  double sensor_range_std = sqrt(pow(std_landmark[0],2) + pow(std_landmark[1],2));
   // Through all particles
   for(int p = 0; p < num_particles; p++){
     vector<int> associations;
@@ -156,14 +157,14 @@ void ParticleFilter::updateWeights(double sensor_range, double std_landmark[],
     }
 
     particles[p].weight = 1.0;
-
+     
     //Predicted observations <- Landmarks within sensor_range
     vector<LandmarkObs> pred_observations;
     for(int j = 0; j < map_landmarks.landmark_list.size(); j++){		
       double landmark_x = map_landmarks.landmark_list[j].x_f;
       double landmark_y = map_landmarks.landmark_list[j].y_f;
       double calc_dist = dist(particles[p].x, particles[p].y, landmark_x, landmark_y);
-      if(calc_dist < sensor_range){
+      if(calc_dist < sensor_range + sensor_range_std*2){ //2*sigma for 95% of measurements
         LandmarkObs pred_obs;
         pred_obs.id = map_landmarks.landmark_list[j].id_i;
         pred_obs.x = landmark_x;
