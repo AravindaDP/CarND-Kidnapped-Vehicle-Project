@@ -42,10 +42,13 @@ struct ground_truth {
  * Struct representing one landmark observation measurement.
  */
 struct LandmarkObs {
-  
-  int id;     // Id of matching landmark in the map.
-  double x;   // Local (vehicle coords) x position of landmark observation [m]
-  double y;   // Local (vehicle coords) y position of landmark observation [m]
+  int id;				// Id of matching landmark in the map.
+  double x;			// Local (vehicle coordinates) x position of landmark observation [m]
+  double y;			// Local (vehicle coordinates) y position of landmark observation [m]
+
+  bool operator==(const LandmarkObs& rhs) const {
+    return (std::abs(x - rhs.x) + std::abs(y - rhs.y)) < 0.01 && id == rhs.id;
+  }
 };
 
 /**
