@@ -28,6 +28,23 @@ Alternatively some scripts have been included to streamline this process, these 
 2. ./build.sh
 3. ./run.sh
 
+### Important:
+```
+In addition to udacity provided CMake build targets, a GoogleTest and GoogleMocks 
+based unit test configuration is also added. For this CMakeLists.txt is modified 
+to download GoogleTest as part of the build's configure step. So please make sure 
+that you have internet connectivity during cmake step above.
+```
+
+## Running Unit Tests
+
+A unit test suite is also compiled as part of above build step. You can simply run it with following command from build directory
+
+`./particle_filter_tests`
+
+Please note that for unit test on project rubric needs you to manually download additional files from [older revision of udacity repo](https://github.com/udacity/CarND-Kidnapped-Vehicle-Project/archive/3a7fdf94163b64b47c289d360421ad9f37ca4620.zip). After downloading older revision just replace the data directory only.
+
+
 Tips for setting up your environment can be found [here](https://classroom.udacity.com/nanodegrees/nd013/parts/40f38239-66b6-46ec-ae68-03afd8a601c8/modules/0949fca6-b379-42af-a919-ee50aa304e6a/lessons/f758c44c-5e40-4e01-93b5-1a82aa4e044f/concepts/23d376c7-0195-4276-bdf0-e02f1f3c665d)
 
 Note that the programs that need to be written to accomplish the project are src/particle_filter.cpp, and particle_filter.h
