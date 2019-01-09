@@ -26,6 +26,10 @@ struct Particle {
   bool operator==(const Particle& rhs) const{
     return (fabs(x - rhs.x) + fabs(y - rhs.y)) < 0.01 && fabs(theta - rhs.theta) < 0.0001;
   }
+
+  LandmarkObs transformObs(const LandmarkObs &obs) {
+    
+  }
 };
 
 

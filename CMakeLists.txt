@@ -66,6 +66,6 @@ endif()
 enable_testing()
 
 # Now simply link against gtest or gtest_main as needed. Eg
-add_executable(particle_filter_tests src/particle_filter.cpp test/particle_filter_test.cpp)
+add_executable(particle_filter_tests src/particle_filter.cpp test/particle_filter_test.cpp test/particle_test.cpp)
 target_link_libraries(particle_filter_tests gmock_main)
 add_test(NAME pf_tests COMMAND particle_filter_tests)
