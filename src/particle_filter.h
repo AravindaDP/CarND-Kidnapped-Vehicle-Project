@@ -28,7 +28,18 @@ struct Particle {
   }
 
   LandmarkObs transformObs(const LandmarkObs &obs) {
-    
+    // Transform the x and y coordinates
+    double x_map, y_map;
+    x_map = x + (cos(theta) * obs.x) - (sin(theta) * obs.y);
+    y_map = y + (sin(theta) * obs.x) + (cos(theta) * obs.y);
+
+    // Create new Position to hold transformed observation
+    LandmarkObs transformed_obs;
+    transformed_obs.id = obs.id;
+    transformed_obs.x = x_map;
+    transformed_obs.y = y_map;
+
+    return transformed_obs;
   }
 };
 
