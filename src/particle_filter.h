@@ -11,7 +11,6 @@
 
 #include <string>
 #include <vector>
-#include <cmath>
 #include "helper_functions.h"
 
 struct Particle {
@@ -25,7 +24,7 @@ struct Particle {
   std::vector<double> sense_y;
   
   bool operator==(const Particle& rhs) const{
-    return (std::abs(x - rhs.x) + std::abs(y - rhs.y)) < 0.01 && std::abs(theta - rhs.theta) < 0.0001;
+    return (fabs(x - rhs.x) + fabs(y - rhs.y)) < 0.01 && fabs(theta - rhs.theta) < 0.0001;
   }
 };
 

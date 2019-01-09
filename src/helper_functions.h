@@ -47,7 +47,7 @@ struct LandmarkObs {
   double y;			// Local (vehicle coordinates) y position of landmark observation [m]
 
   bool operator==(const LandmarkObs& rhs) const {
-    return (std::abs(x - rhs.x) + std::abs(y - rhs.y)) < 0.01 && id == rhs.id;
+    return (fabs(x - rhs.x) + fabs(y - rhs.y)) < 0.01 && id == rhs.id;
   }
 };
 
